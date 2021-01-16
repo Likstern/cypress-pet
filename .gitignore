@@ -131,3 +131,7 @@ dist
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/cypressio,node,vscode
+
+### WebStorm ###
+
+.idea/
