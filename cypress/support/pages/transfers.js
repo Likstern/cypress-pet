@@ -1,13 +1,6 @@
-export class Transfers {
+import {BasePage} from "./basePage";
 
-    typeBankCardData(cardNumber, expDate, cvv) {
-        cy.get('[data-qa-node="numberdebitSource"]')
-            .type(cardNumber)
-            .get('[data-qa-node="expiredebitSource"]')
-            .type(expDate)
-            .get('[data-qa-node="cvvdebitSource"]')
-            .type(cvv);
-    }
+export class Transfers extends BasePage {
 
     typeSenderCardUserData(firstName, lastName) {
         cy.get('[data-qa-node="firstNamedebitSource"]')
@@ -27,19 +20,11 @@ export class Transfers {
             .type(lastName)
     }
 
-    typeAmount(amount) {
-        cy.get('[data-qa-node="amount"]').type(amount);
-    }
-
     typeComment(comment) {
         cy.get('[data-qa-node="toggle-comment"]')
             .click()
             .get('[data-qa-node="comment"]')
             .type(comment)
-    }
-
-    submitPayment() {
-        cy.get('[type="submit"]').click();
     }
 
     checkCards(senderCardMask, receiverCardMask) {

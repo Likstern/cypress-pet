@@ -1,29 +1,14 @@
-export class MobilePhoneReplenishment {
+import {BasePage} from "./basePage";
+
+export class MobilePhoneReplenishment extends BasePage{
 
     constructor() {
-        this.ammontLabel = '[data-qa-node="amount"]';
+        super();
         this.cardNumberLabel = '[data-qa-node="card"]';
     }
 
     typePhoneNumber(phoneNumber) {
         cy.get('[data-qa-node="phone-number"]').type(phoneNumber);
-    }
-
-    typeAmount(amount) {
-        cy.get(this.ammontLabel).type(amount);
-    }
-
-    typeBankCardData(cardNumber, expDate, cvv) {
-        cy.get('[data-qa-node="numberdebitSource"]')
-            .type(cardNumber)
-            .get('[data-qa-node="expiredebitSource"]')
-            .type(expDate)
-            .get('[data-qa-node="cvvdebitSource"]')
-            .type(cvv);
-    }
-
-    submitPayment() {
-        cy.get('[data-qa-node="submit"]').click();
     }
 
     // TODO: добавить перевод в маску в методе.
@@ -32,7 +17,7 @@ export class MobilePhoneReplenishment {
     }
 
     checkBankCardAmount(amount) {
-        cy.get(this.cardNumberLabel).get(this.ammontLabel).should('have.text', amount);
+        cy.get(this.cardNumberLabel).get(this.amountLabel).should('have.text', amount);
     }
 
     checkBankCardCurrency(currency) {
@@ -40,15 +25,15 @@ export class MobilePhoneReplenishment {
             .should('contain.text', currency)
     }
 
-    checkCommission(commisionValue) {
+    checkCommission(commissionValue) {
         cy.get('span[data-qa-node="commission"]')
-            .should('have.text', commisionValue)
+            .should('have.text', commissionValue)
     }
 
-    checkCommissionCurrency(commisionCurrency) {
+    checkCommissionCurrency(commissionCurrency) {
         cy.get('span[data-qa-node="commission"] ~ small')
-            .should('contain.text', commisionCurrency)
+            .should('contain.text', commissionCurrency)
     }
 }
 
-export const mobileReplenishmen = new MobilePhoneReplenishment()
+export const mobileReplenishment = new MobilePhoneReplenishment()
