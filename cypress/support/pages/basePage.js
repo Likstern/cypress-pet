@@ -20,4 +20,12 @@ export class BasePage {
     submitPayment() {
         cy.get('[type="submit"]').click();
     }
+
+    confirmPayment() {
+        cy.contains('Confirm').click();
+    }
+
+    selectArchive(){
+        cy.get('[title="Archive"]').click();
+    }
 }
