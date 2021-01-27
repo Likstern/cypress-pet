@@ -2,5 +2,19 @@
   "viewportWidth": 1920,
   "viewportHeight": 1080,
   "baseUrl": "https://next.privat24.ua",
-  "ignoreTestFiles": "**/examples/*"
+  "env": {
+    "cypress-plugins-snapshots": {
+      "imageConfig": {
+        "threshold": 1,
+        "thresholdType": "pixel"
+      },
+      "name": "custom image name",
+      "separator": "custom image separator"
+    }
+  },
+  "ignoreTestFiles": [
+    "**/__snapshots__/*",
+    "**/__image_snapshots__/*",
+    "**/examples/*"
+  ]
 }
